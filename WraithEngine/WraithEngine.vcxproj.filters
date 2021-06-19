@@ -21,12 +21,18 @@
     <ClCompile Include="Source\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\WraithException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\WraithWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WraithException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
