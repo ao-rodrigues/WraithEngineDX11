@@ -5,6 +5,7 @@
 using namespace Wraith;
 
 #pragma region Window
+
 Window::Window(const int width, const int height, const char* name)
 	: _width(width)
 	, _height(height)
@@ -14,7 +15,7 @@ Window::Window(const int width, const int height, const char* name)
 	windowRect.left = 100;
 	windowRect.right = _width + windowRect.left;
 	windowRect.top = 100;
-	windowRect.bottom = _width + windowRect.top;
+	windowRect.bottom = _height + windowRect.top;
 
 	if(AdjustWindowRect(&windowRect, WS_CAPTION | WS_MINIMIZEBOX |WS_SYSMENU, FALSE) == 0)
 	{
@@ -87,6 +88,24 @@ LRESULT Window::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_CLOSE:
 		PostQuitMessage(0);
 		return 0;
+	case WM_KILLFOCUS:
+		keyboard.ClearKeyStates();
+		break;
+
+	case WM_KEYDOWN:
+	case WM_SYSKEYDOWN:
+		if(!(lParam & 0x40000000) || keyboard.AutoRepeatIsEnabled())
+		{
+			keyboard.OnKeyPressed(static_cast<unsigned char>(wParam));
+		}
+		break;
+	case WM_KEYUP:
+	case WM_SYSKEYUP:
+		keyboard.OnKeyReleased(static_cast<unsigned char>(wParam));
+		break;
+	case WM_CHAR:
+		keyboard.OnChar(static_cast<char>(wParam));
+		break;
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);

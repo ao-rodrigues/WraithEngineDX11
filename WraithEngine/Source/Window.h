@@ -3,6 +3,7 @@
 #include "WraithWin.h"
 
 #include "WraithException.h"
+#include "Keyboard.h"
 
 namespace Wraith
 {
@@ -29,6 +30,8 @@ namespace Wraith
 		private:
 			HRESULT _hr;
 		};
+
+		Keyboard keyboard;
 
 	private:
 		class WindowClass
