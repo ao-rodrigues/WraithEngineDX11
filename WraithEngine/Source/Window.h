@@ -1,15 +1,34 @@
 #pragma once
+
 #include "WraithWin.h"
+
+#include "WraithException.h"
 
 namespace Wraith
 {
 	class Window
 	{
 	public:
-		Window(int width, int height, const char* name) noexcept;
+		Window(int width, int height, const char* name);
 		~Window();
 		Window(const Window&) = delete;
 		Window& operator=(const Window&) = delete;
+
+		class Exception : public WraithException
+		{
+		public:
+			Exception(int line, const char* file, HRESULT hr) noexcept;
+
+			const char* what() const noexcept override;
+			const char* GetType() const noexcept override;
+
+			static std::string TranslateErrorCode(HRESULT hr) noexcept;
+			HRESULT GetErrorCode() const noexcept;
+			std::string GetErrorString() const noexcept;
+
+		private:
+			HRESULT _hr;
+		};
 
 	private:
 		class WindowClass
@@ -36,4 +55,8 @@ namespace Wraith
 		HWND _hWnd;
 	};
 
+// Error exception helper macros
+#define WR_WINDOW_EXCEPTION(hr) Window::Exception(__LINE__, __FILE__, hr)
+#define WR_WINDOW_LAST_EXCEPTION() Window::Exception(__LINE__, __FILE__, GetLastError())
+	
 }
