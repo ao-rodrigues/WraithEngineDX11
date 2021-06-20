@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "WraithException.h"
-
-#include <sstream>
 
 using namespace Wraith;
 

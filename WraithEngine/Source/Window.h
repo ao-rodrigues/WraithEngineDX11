@@ -1,7 +1,5 @@
 #pragma once
 
-#include "WraithWin.h"
-
 #include "WraithException.h"
 #include "Keyboard.h"
 #include "Mouse.h"
