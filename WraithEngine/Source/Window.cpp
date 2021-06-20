@@ -51,6 +51,14 @@ Window::~Window()
 	DestroyWindow(_hWnd);
 }
 
+void Window::SetTitle(const std::string& title) noexcept
+{
+	if(SetWindowText(_hWnd, title.c_str()) == 0)
+	{
+		throw WR_WINDOW_LAST_EXCEPTION();
+	}
+}
+
 LRESULT WINAPI Window::HandleMessageSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
 	if (msg == WM_NCCREATE)
@@ -82,7 +90,7 @@ LRESULT WINAPI Window::HandleMessageThunk(HWND hWnd, UINT msg, WPARAM wParam, LP
 }
 
 LRESULT Window::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
-{
+{	
 	switch (msg)
 	{
 	case WM_CLOSE:
@@ -92,6 +100,7 @@ LRESULT Window::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		keyboard.ClearKeyStates();
 		break;
 
+	/************ BEGIN KEYBOARD MESSAGES ************/
 	case WM_KEYDOWN:
 	case WM_SYSKEYDOWN:
 		if(!(lParam & 0x40000000) || keyboard.AutoRepeatIsEnabled())
@@ -106,6 +115,85 @@ LRESULT Window::HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_CHAR:
 		keyboard.OnChar(static_cast<char>(wParam));
 		break;
+		
+	/************* END KEYBOARD MESSAGES *************/
+
+	/************ BEGIN MOUSE MESSAGES ************/
+	case WM_MOUSEMOVE:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+
+		// If in client region, log move, enter, and capture mouse
+		if(x >= 0 && x < _width && y >= 0 && y < _height)
+		{
+			mouse.OnMouseMove(x, y);
+
+			if(!mouse.IsInWindow())
+			{
+				SetCapture(_hWnd);
+				mouse.OnMouseEnter();
+			}
+		}
+		// If not in client region, log move if either left or right is pressed
+		else
+		{
+			if(mouse.LeftIsPressed() || mouse.RightIsPressed())
+			{
+				mouse.OnMouseMove(x, y);
+			}
+			// Button up, release capture and log mouse leave event
+			else
+			{
+				ReleaseCapture();
+				mouse.OnMouseLeave();
+			}
+		}
+		break;
+	}
+	case WM_LBUTTONDOWN:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+		mouse.OnLeftPressed(x, y);
+		break;
+	}
+	case WM_LBUTTONUP:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+		mouse.OnLeftReleased(x, y);
+
+		if(x < 0 || x >= _width || y < 0 || y >= _height)
+		{
+			ReleaseCapture();
+			mouse.OnMouseLeave();
+		}
+		break;
+	}
+	case WM_RBUTTONDOWN:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+		mouse.OnRightPressed(x, y);
+		break;
+	}
+	case WM_RBUTTONUP:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+		mouse.OnRightReleased(x, y);
+
+		if(x < 0 || x >= _width || y < 0 || y >= _height)
+		{
+			ReleaseCapture();
+			mouse.OnMouseLeave();
+		}
+		break;
+	}
+	case WM_MOUSEWHEEL:
+	{
+		const auto [x, y] = MAKEPOINTS(lParam);
+		const int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+		mouse.OnWheelDelta(x, y, delta);
+	}
+		
+	/************ END MOUSE MESSAGES *************/
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);

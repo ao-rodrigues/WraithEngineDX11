@@ -4,17 +4,13 @@
 
 #include "WraithException.h"
 #include "Keyboard.h"
+#include "Mouse.h"
 
 namespace Wraith
 {
 	class Window
 	{
 	public:
-		Window(int width, int height, const char* name);
-		~Window();
-		Window(const Window&) = delete;
-		Window& operator=(const Window&) = delete;
-
 		class Exception : public WraithException
 		{
 		public:
@@ -22,7 +18,6 @@ namespace Wraith
 
 			const char* what() const noexcept override;
 			const char* GetType() const noexcept override;
-
 			static std::string TranslateErrorCode(HRESULT hr) noexcept;
 			HRESULT GetErrorCode() const noexcept;
 			std::string GetErrorString() const noexcept;
@@ -30,8 +25,16 @@ namespace Wraith
 		private:
 			HRESULT _hr;
 		};
+		
+		Window(int width, int height, const char* name);
+		~Window();
+		Window(const Window&) = delete;
+		Window& operator=(const Window&) = delete;
+
+		void SetTitle(const std::string& title) noexcept;
 
 		Keyboard keyboard;
+		Mouse mouse;
 
 	private:
 		class WindowClass

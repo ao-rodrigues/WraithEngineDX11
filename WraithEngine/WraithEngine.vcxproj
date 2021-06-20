@@ -89,12 +89,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Keyboard.cpp" />
+    <ClCompile Include="Source\Mouse.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\WinMain.cpp" />
     <ClCompile Include="Source\WraithException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Keyboard.h" />
+    <ClInclude Include="Source\Mouse.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\WraithException.h" />
     <ClInclude Include="Source\WraithWin.h" />
