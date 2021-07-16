@@ -36,7 +36,7 @@
     <ClCompile Include="Source\Mouse.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\pch.cpp">
+    <ClCompile Include="Source\wrpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClInclude Include="Source\Mouse.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\pch.h">
+    <ClInclude Include="Source\wrpch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
