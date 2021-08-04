@@ -1,5 +1,7 @@
 # WraithEngine
 A DirectX 11 game engine.
 
-# How to build
-This project is developed in Visual Studio 2019. Simply open the project there and build it.
+# Getting Started
+This project uses Premake as its build system. 
+
+To generate Visual Studio 2019 project files simply run ``GenerateProjectVS2019.bat``. Then simply open the solution and build the project from there.
