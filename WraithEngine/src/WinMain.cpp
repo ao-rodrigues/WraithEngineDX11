@@ -1,5 +1,7 @@
 #include "wrpch.h"
+/*
 #include "Window.h"
+
 
 using namespace Wraith;
 
@@ -78,3 +80,4 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	return -1;
 }
+*/
