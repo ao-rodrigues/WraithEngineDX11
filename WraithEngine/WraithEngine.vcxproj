@@ -58,6 +58,7 @@
       <PrecompiledHeaderFile>wrpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -77,6 +78,7 @@
       <PrecompiledHeaderFile>wrpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -94,14 +96,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
     <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\WraithException.h" />
     <ClInclude Include="src\WraithWin.h" />
     <ClInclude Include="src\wrpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\WinMain.cpp" />

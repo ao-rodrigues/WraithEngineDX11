@@ -1,7 +1,26 @@
 #include <iostream>
+#include <Wraith.h>
 
-int main(int, char*)
+class Sandbox : public Wraith::Application
 {
-	std::cout << "Hello World!" << std::endl;
-	return 0;
+public:
+	Sandbox()
+	{
+		
+	}
+	
+	~Sandbox()
+	{
+		
+	}
+};
+
+
+void main()
+{
+	auto sandbox = new Sandbox();
+
+	sandbox->Run();
+
+	delete sandbox;
 }

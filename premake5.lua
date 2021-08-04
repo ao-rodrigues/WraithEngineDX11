@@ -27,6 +27,10 @@ project "WraithEngine"
 		"%{prj.name}/src/**.cpp"
 	}
 
+	includedirs {
+		"%{prj.name}/src"
+	}
+
 	buildoptions { "/W3", "/MP" }
 	flags { "MultiProcessorCompile" }
 
