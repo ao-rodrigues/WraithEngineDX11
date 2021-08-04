@@ -92,25 +92,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Keyboard.cpp" />
-    <ClCompile Include="Source\Mouse.cpp" />
-    <ClCompile Include="Source\wrpch.cpp">
+    <ClCompile Include="src\Keyboard.cpp" />
+    <ClCompile Include="src\Mouse.cpp" />
+    <ClCompile Include="src\wrpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">wrpch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">wrpch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Source\Window.cpp" />
-    <ClCompile Include="Source\WinMain.cpp" />
-    <ClCompile Include="Source\WraithException.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\WinMain.cpp" />
+    <ClCompile Include="src\WraithException.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Keyboard.h" />
-    <ClInclude Include="Source\Mouse.h" />
-    <ClInclude Include="Source\wrpch.h" />
-    <ClInclude Include="Source\Window.h" />
-    <ClInclude Include="Source\WraithException.h" />
-    <ClInclude Include="Source\WraithWin.h" />
+    <ClInclude Include="src\Keyboard.h" />
+    <ClInclude Include="src\Mouse.h" />
+    <ClInclude Include="src\wrpch.h" />
+    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\WraithException.h" />
+    <ClInclude Include="src\WraithWin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
