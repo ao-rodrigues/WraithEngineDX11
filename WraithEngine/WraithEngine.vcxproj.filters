@@ -21,42 +21,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\WinMain.cpp">
+    <ClCompile Include="src\WinMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Window.cpp">
+    <ClCompile Include="src\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\WraithException.cpp">
+    <ClCompile Include="src\WraithException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Keyboard.cpp">
+    <ClCompile Include="src\Keyboard.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mouse.cpp">
+    <ClCompile Include="src\Mouse.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\wrpch.cpp">
+    <ClCompile Include="src\wrpch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\WraithWin.h">
+    <ClInclude Include="src\WraithWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Window.h">
+    <ClInclude Include="src\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\WraithException.h">
+    <ClInclude Include="src\WraithException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Keyboard.h">
+    <ClInclude Include="src\Keyboard.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mouse.h">
+    <ClInclude Include="src\Mouse.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\wrpch.h">
+    <ClInclude Include="src\wrpch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
