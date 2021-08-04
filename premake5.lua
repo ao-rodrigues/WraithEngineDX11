@@ -37,6 +37,7 @@ project "WraithEngine"
 	filter "system:windows"
 		systemversion "latest"
 		characterset "MBCS"
+		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
@@ -71,12 +72,16 @@ project "Sandbox"
 		"WraithEngine/src"
 	}
 
+	buildoptions { "/W3", "/MP" }
+
 	links {
 		"WraithEngine"
 	}
 
 	filter "system:windows"
 		systemversion "latest"
+		characterset "MBCS"
+		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
@@ -85,9 +90,6 @@ project "Sandbox"
 	filter "configurations:Release"
 		defines { "NDEBUG" }
 		optimize "on"
-
-	filter "system:windows"
-		buildoptions { "/W3", "/sdl", "/MP", "/Ot", "/fp:fast" }
 
 	filter { "system:windows", "configurations:Debug" }
 		buildoptions "/MTd"

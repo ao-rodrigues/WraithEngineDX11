@@ -15,4 +15,7 @@ namespace Wraith
 
 		void Run();
 	};
+
+	// To be defined by Client
+	Application* CreateApplication();
 }

@@ -1,4 +1,3 @@
-#include <iostream>
 #include <Wraith.h>
 
 class Sandbox : public Wraith::Application
@@ -15,12 +14,7 @@ public:
 	}
 };
 
-
-void main()
+Wraith::Application* Wraith::CreateApplication()
 {
-	auto sandbox = new Sandbox();
-
-	sandbox->Run();
-
-	delete sandbox;
+	return new Sandbox();
 }
