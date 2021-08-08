@@ -3,18 +3,14 @@
 class Sandbox : public Wraith::Application
 {
 public:
-	Sandbox()
-	{
-		
-	}
+	Sandbox(const std::string& name, int windowWidth, int windowHeight)
+		: Application(name, windowWidth, windowHeight)
+	{}
 	
-	~Sandbox()
-	{
-		
-	}
+	~Sandbox() = default;
 };
 
-Wraith::Application* Wraith::CreateApplication()
+Wraith::Application Wraith::CreateApplication()
 {
-	return new Sandbox();
+	return Sandbox("Sandbox Test", 1280, 720);
 }

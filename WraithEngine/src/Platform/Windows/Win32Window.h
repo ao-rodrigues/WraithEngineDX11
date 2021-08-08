@@ -1,17 +1,18 @@
 #pragma once
 
 #include "WraithException.h"
-#include "Keyboard.h"
-#include "Mouse.h"
+#include "Core/Window.h"
+#include "WraithWin32.h"
 
 namespace Wraith
 {
-	class Window
+	class Win32Window : public Window
 	{
 	public:
 		class Exception : public WraithException
 		{
 		public:
+			
 			Exception(int line, const char* file, HRESULT hr) noexcept;
 
 			const char* what() const noexcept override;
@@ -24,15 +25,12 @@ namespace Wraith
 			HRESULT _hr;
 		};
 		
-		Window(int width, int height, const char* name);
-		~Window();
-		Window(const Window&) = delete;
-		Window& operator=(const Window&) = delete;
+		Win32Window(const std::string& title, unsigned int width, unsigned int height);
+		virtual ~Win32Window();
 
-		void SetTitle(const std::string& title) noexcept;
-
-		Keyboard keyboard;
-		Mouse mouse;
+		unsigned int GetWidth() const override { return _width; }
+		unsigned int GetHeight() const override { return _height; }
+		std::optional<int> ProcessMessages() override;
 
 	private:
 		class WindowClass
@@ -54,13 +52,15 @@ namespace Wraith
 		static LRESULT CALLBACK HandleMessageThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 		LRESULT HandleMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 		
-		int _width;
-		int _height;
+		std::string _title;
+		unsigned int _width;
+		unsigned int _height;
+
 		HWND _hWnd;
 	};
 
-// Error exception helper macros
-#define WR_WINDOW_EXCEPTION(hr) Window::Exception(__LINE__, __FILE__, hr)
-#define WR_WINDOW_LAST_EXCEPTION() Window::Exception(__LINE__, __FILE__, GetLastError())
-	
+	//Error exception helper macros
+	#define WR_WINDOW_EXCEPTION(hr) Win32Window::Exception(__LINE__, __FILE__, hr)
+	#define WR_WINDOW_LAST_EXCEPTION() Win32Window::Exception(__LINE__, __FILE__, GetLastError())
 }
+

@@ -4,30 +4,78 @@
     <Filter Include="Core">
       <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Win32">
+      <UniqueIdentifier>{8C36D494-7804-C89A-6198-38C14D05A4FF}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Base.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\EntryPoint.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Utils.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\EventBus.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\KeyboardEvents.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\MouseEvents.h">
+      <Filter>Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\Platform\Windows\Win32Window.h">
+      <Filter>Platform\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WraithWin32.h">
+      <Filter>Platform\Win32</Filter>
+    </ClInclude>
     <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\WraithException.h" />
-    <ClInclude Include="src\WraithWin.h" />
     <ClInclude Include="src\wrpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\Window.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Events\EventBus.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Events\KeyboardEvents.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Events\MouseEvents.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Mouse.cpp" />
+    <ClCompile Include="src\Platform\Windows\Win32Window.cpp">
+      <Filter>Platform\Win32</Filter>
+    </ClCompile>
     <ClCompile Include="src\WinMain.cpp" />
-    <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\WraithException.cpp" />
     <ClCompile Include="src\wrpch.cpp" />
   </ItemGroup>
