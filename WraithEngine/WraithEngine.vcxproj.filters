@@ -53,6 +53,8 @@
     <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\WraithException.h" />
     <ClInclude Include="src\wrpch.h" />
+    <ClInclude Include="src\Core\Input.h" />
+    <ClInclude Include="src\Core\MouseCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -78,5 +80,6 @@
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\WraithException.cpp" />
     <ClCompile Include="src\wrpch.cpp" />
+    <ClCompile Include="src\Core\Input.cpp" />
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include "Events/EventBus.h"
 #include "Events/MouseEvents.h"
 #include "Events/KeyboardEvents.h"
+#include "Core/Input.h"
 
 namespace Wraith
 {
@@ -111,7 +112,7 @@ namespace Wraith
 			PostQuitMessage(0);
 			return 0;
 		case WM_KILLFOCUS:
-			//keyboard.ClearKeyStates();
+			Input::ClearKeyStates();
 			break;
 
 		case WM_KEYDOWN:
@@ -142,33 +143,30 @@ namespace Wraith
 			// If in client region, log move, enter, and capture mouse
 			if(x >= 0 && x < _width && y >= 0 && y < _height)
 			{
-				//mouse.OnMouseMove(x, y);
 				EventBus::Send<MouseMovedEvent>(x, y);
 				
-				/*
-				if(!mouse.IsInWindow())
+				if(!Input::IsMouseInWindow())
 				{
 					SetCapture(_hWnd);
-					mouse.OnMouseEnter();
+					EventBus::Send<MouseEnterEvent>();
 				}
-				*/
+				
 			}
 			// If not in client region, log move if either left or right is pressed
 			else
 			{
-				/*
-				if(mouse.LeftIsPressed() || mouse.RightIsPressed())
+				if(Input::IsMouseButtonDown(MouseButton::Left) || Input::IsMouseButtonDown(MouseButton::Right))
 				{
-					mouse.OnMouseMove(x, y);
+					EventBus::Send<MouseMovedEvent>(x, y);
 				}
 				
 				// Button up, release capture and log mouse leave event
 				else
 				{
 					ReleaseCapture();
-					mouse.OnMouseLeave();
+					EventBus::Send<MouseLeaveEvent>();
 				}
-				*/
+				
 			}
 			break;
 		}
@@ -179,45 +177,43 @@ namespace Wraith
 		}
 		case WM_LBUTTONUP:
 		{
-			//const auto [x, y] = MAKEPOINTS(lParam);
+			const auto [x, y] = MAKEPOINTS(lParam);
 			EventBus::Send<MouseButtonReleasedEvent>(MouseButton::Left);
 
-			/*
 			if(x < 0 || x >= _width || y < 0 || y >= _height)
 			{
 				ReleaseCapture();
-				const MouseLeaveEvent mouseLeaveEvent;
-				EventBus::Send(mouseLeaveEvent);
+				EventBus::Send<MouseLeaveEvent>();
 			}
-			*/
+			
 			break;
 		}
 		case WM_RBUTTONDOWN:
 		{
-			const MouseButtonPressedEvent event(MouseButton::Right);
 			EventBus::Send<MouseButtonPressedEvent>(MouseButton::Right);
 			break;
 		}
 		case WM_RBUTTONUP:
 		{
-			//const auto [x, y] = MAKEPOINTS(lParam);
+			const auto [x, y] = MAKEPOINTS(lParam);
 			EventBus::Send<MouseButtonReleasedEvent>(MouseButton::Right);
 
-			/*
 			if(x < 0 || x >= _width || y < 0 || y >= _height)
 			{
 				ReleaseCapture();
-				//mouse.OnMouseLeave();
+				EventBus::Send<MouseLeaveEvent>();
 			}
-			*/
 			break;
 		}
 		case WM_MOUSEWHEEL:
 		{
-			//const auto [x, y] = MAKEPOINTS(lParam);
-			const int delta = GET_WHEEL_DELTA_WPARAM(wParam);
-			//mouse.OnWheelDelta(x, y, delta);
-			EventBus::Send<MouseWheelDeltaEvent>(delta);
+			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+			if (delta != 0)
+			{
+				// Flatten the input to an OS-independent range (-1, 1)
+				delta = (delta < 0) ? -1 : 1;
+				EventBus::Send<MouseWheelDeltaEvent>(delta);
+			}
 		}
 			
 		}

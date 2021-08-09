@@ -99,6 +99,8 @@
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\Base.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
+    <ClInclude Include="src\Core\Input.h" />
+    <ClInclude Include="src\Core\MouseCodes.h" />
     <ClInclude Include="src\Core\Utils.h" />
     <ClInclude Include="src\Core\Window.h" />
     <ClInclude Include="src\Events\Event.h" />
@@ -115,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\Core\Input.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
     <ClCompile Include="src\Events\EventBus.cpp" />
     <ClCompile Include="src\Events\KeyboardEvents.cpp" />

@@ -1,12 +1,15 @@
 #include "wrpch.h"
 
 #include "Application.h"
+#include "Input.h"
 
 namespace Wraith
 {
 	Application::Application(const std::string& name, int windowWidth, int windowHeight)
 		: _window(Window::Create(name, windowWidth, windowHeight))
-	{}
+	{
+		Input::Init();
+	}
 
 	int Application::Run()
 	{
@@ -16,6 +19,8 @@ namespace Wraith
 			{
 				return *exitCode;
 			}
+
+			
 		}
 	}
 }
