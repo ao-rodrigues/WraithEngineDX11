@@ -7,27 +7,19 @@
 
 namespace Wraith
 {
-	template<typename T>
-	using EventCallback = std::function<void(const T&)>;
+	template<typename EventType>
+	using EventCallback = std::function<void(const EventType&)>;
 	
 	class EventBus
 	{
 	public:
-		template<typename T>
-		static void Register(const EventCallback<T>& callback)
+		template<typename EventType>
+		static void Register(EventCallback<EventType> callback)
 		{
-			static_assert(std::is_base_of<Event, T>(), "Class not derived from Event!");
+			static_assert(std::is_base_of<Event, EventType>(), "Class not derived from Event!");
 
-			const auto key = typeid(T).hash_code();
-			if (s_listeners.count(key))
-			{
-				s_listeners.at(key).push_back(callback);
-			}
-			else
-			{
-				s_listeners.emplace(key, std::vector<EventCallback<Event>>());
-				s_listeners.at(key).push_back(callback);
-			}
+			const auto key = typeid(EventType).hash_code();
+			s_listeners[key].emplace_back(CallbackWrapper<EventType>(callback));
 		}
 
 		template<typename T, typename... TArgs>
@@ -35,21 +27,36 @@ namespace Wraith
 		{
 			static_assert(std::is_base_of<Event, T>(), "Class not derived from Event!");
 
-			const T event{args...};
+			const T event(std::forward<TArgs>(args)...);
 			
 			const auto key = typeid(T).hash_code();
-			if(const auto listeners = s_listeners.find(key); listeners != s_listeners.end())
+			if(s_listeners.find(key) == s_listeners.end())
 			{
-				for (const auto& listener : listeners->second)
-				{
-					listener(event);
-				}
+				return;
+			}
+
+			for (auto&& listener : s_listeners.at(key))
+			{
+				listener(event);
 			}
 		}
 
 	private:
+		template<typename EventType>
+		struct CallbackWrapper
+		{
+			CallbackWrapper(EventCallback<EventType> callback)
+				: callback(callback)
+			{}
+
+			void operator()(const Event& event)
+			{
+				callback(static_cast<const EventType&>(event));
+			}
+			
+			EventCallback<EventType> callback;
+		};
+		
 		static std::unordered_map<size_t, std::vector<EventCallback<Event>>> s_listeners;
 	};
-
-	std::unordered_map<size_t, std::vector<EventCallback<Event>>> EventBus::s_listeners;
 }

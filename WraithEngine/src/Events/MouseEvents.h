@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Event.h"
+#include "Core/MouseCodes.h"
 
 namespace Wraith
 {
@@ -12,13 +13,6 @@ namespace Wraith
 		Moved,
 		Enter,
 		Leave
-	};
-
-	enum class MouseButton
-	{
-		Left = 0,
-		Right,
-		Middle
 	};
 
 	class MouseButtonPressedEvent : public Event

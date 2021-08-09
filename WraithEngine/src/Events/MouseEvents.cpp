@@ -1,4 +1,5 @@
 ﻿#include "wrpch.h"
+#include "Core/MouseCodes.h"
 #include "MouseEvents.h"
 
 namespace Wraith
