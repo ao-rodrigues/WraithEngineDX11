@@ -10,8 +10,8 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Win32">
-      <UniqueIdentifier>{8C36D494-7804-C89A-6198-38C14D05A4FF}</UniqueIdentifier>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,6 +22,12 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\EntryPoint.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Input.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\MouseCodes.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Utils.h">
@@ -45,19 +51,20 @@
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
     <ClInclude Include="src\Platform\Windows\Win32Window.h">
-      <Filter>Platform\Win32</Filter>
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WraithWin32.h">
-      <Filter>Platform\Win32</Filter>
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\WraithException.h" />
     <ClInclude Include="src\wrpch.h" />
-    <ClInclude Include="src\Core\Input.h" />
-    <ClInclude Include="src\Core\MouseCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Input.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Window.cpp">
@@ -75,11 +82,10 @@
     <ClCompile Include="src\Keyboard.cpp" />
     <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp">
-      <Filter>Platform\Win32</Filter>
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\WraithException.cpp" />
     <ClCompile Include="src\wrpch.cpp" />
-    <ClCompile Include="src\Core\Input.cpp" />
   </ItemGroup>
 </Project>

@@ -28,7 +28,8 @@ project "WraithEngine"
 	}
 
 	includedirs {
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"vendor/spdlog/include"
 	}
 
 	buildoptions { "/W3", "/MP" }
@@ -69,7 +70,8 @@ project "Sandbox"
 	}
 
 	includedirs {
-		"WraithEngine/src"
+		"WraithEngine/src",
+		"vendor/spdlog/include"
 	}
 
 	buildoptions { "/W3", "/MP" }
