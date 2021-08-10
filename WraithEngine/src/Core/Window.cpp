@@ -2,9 +2,8 @@
 #include "Core/Window.h"
 
 #ifdef WR_PLATFORM_WINDOWS
-	#include "Platform/Windows/Win32Window.h"
+#include "Platform/Windows/Win32Window.h"
 #endif
-
 
 namespace Wraith
 {

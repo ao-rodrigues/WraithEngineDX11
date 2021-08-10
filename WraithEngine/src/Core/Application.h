@@ -3,8 +3,6 @@
 #include "Core/Base.h"
 #include "Core/Window.h"
 
-#include <string>
-
 namespace Wraith
 {
 	class Application

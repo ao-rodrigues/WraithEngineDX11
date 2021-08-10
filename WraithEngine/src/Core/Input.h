@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "MouseCodes.h"
 #include "Events/MouseEvents.h"
 #include "Events/KeyboardEvents.h"
+#include "MouseCodes.h"
 #include "KeyCodes.h"
 
 namespace Wraith
