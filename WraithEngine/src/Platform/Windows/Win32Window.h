@@ -1,6 +1,6 @@
 #pragma once
 
-#include "WraithException.h"
+#include "Core/WraithException.h"
 #include "Core/Window.h"
 
 namespace Wraith

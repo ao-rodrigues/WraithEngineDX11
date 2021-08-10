@@ -115,7 +115,7 @@
     <ClInclude Include="src\Platform\Windows\Win32Window.h" />
     <ClInclude Include="src\Platform\Windows\WraithWin32.h" />
     <ClInclude Include="src\Wraith.h" />
-    <ClInclude Include="src\WraithException.h" />
+    <ClInclude Include="src\Core\WraithException.h" />
     <ClInclude Include="src\wrpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +130,7 @@
     <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
-    <ClCompile Include="src\WraithException.cpp" />
+    <ClCompile Include="src\Core\WraithException.cpp" />
     <ClCompile Include="src\wrpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
