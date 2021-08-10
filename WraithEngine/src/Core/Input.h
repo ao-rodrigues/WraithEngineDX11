@@ -3,11 +3,10 @@
 #include "MouseCodes.h"
 #include "Events/MouseEvents.h"
 #include "Events/KeyboardEvents.h"
+#include "KeyCodes.h"
 
 namespace Wraith
-{
-	using KeyCode = unsigned char;
-	
+{	
 	class Input
 	{
 	friend class Application;
@@ -21,7 +20,7 @@ namespace Wraith
 		static bool IsMouseButtonDown(MouseButton button) { return s_mouseButtonStates[static_cast<int>(button)]; }
 		static bool IsMouseInWindow() { return s_isInWindow; }
 
-		static bool IsKeyDown(KeyCode keyCode) { return s_keyStates[keyCode]; }
+		static bool IsKeyDown(KeyCode keyCode) { return s_keyStates[static_cast<unsigned char>(keyCode)]; }
 		static std::optional<char> ReadChar()
 		{
 			if (!s_charsTyped.empty())
