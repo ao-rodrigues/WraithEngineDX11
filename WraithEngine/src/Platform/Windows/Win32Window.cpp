@@ -205,6 +205,23 @@ namespace Wraith
 			}
 			break;
 		}
+		case WM_MBUTTONDOWN:
+		{
+			EventBus::Send<MouseButtonPressedEvent>(MouseButton::Middle);
+			break;
+		}
+		case WM_MBUTTONUP:
+		{
+			const auto [x, y] = MAKEPOINTS(lParam);
+			EventBus::Send<MouseButtonReleasedEvent>(MouseButton::Middle);
+
+			if(x < 0 || x >= _width || y < 0 || y >= _height)
+			{
+				ReleaseCapture();
+				EventBus::Send<MouseLeaveEvent>();
+			}
+			break;
+		}
 		case WM_MOUSEWHEEL:
 		{
 			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
