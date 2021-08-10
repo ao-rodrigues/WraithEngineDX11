@@ -54,8 +54,6 @@
     <ClInclude Include="src\Events\MouseEvents.h">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Keyboard.h" />
-    <ClInclude Include="src\Mouse.h" />
     <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -91,12 +89,9 @@
     <ClCompile Include="src\Events\MouseEvents.cpp">
       <Filter>Events</Filter>
     </ClCompile>
-    <ClCompile Include="src\Keyboard.cpp" />
-    <ClCompile Include="src\Mouse.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="src\Core\WraithException.cpp" />
     <ClCompile Include="src\wrpch.cpp" />
   </ItemGroup>
