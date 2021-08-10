@@ -28,6 +28,8 @@ int main()
 	{
 		MessageBox(nullptr, "No details available", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
 	}
+
+	return -1;
 }
 
 #endif
