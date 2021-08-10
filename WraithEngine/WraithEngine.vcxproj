@@ -100,6 +100,8 @@
     <ClInclude Include="src\Core\Base.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
     <ClInclude Include="src\Core\Input.h" />
+    <ClInclude Include="src\Core\KeyCodes.h" />
+    <ClInclude Include="src\Core\Logger.h" />
     <ClInclude Include="src\Core\MouseCodes.h" />
     <ClInclude Include="src\Core\Utils.h" />
     <ClInclude Include="src\Core\Window.h" />
@@ -109,6 +111,7 @@
     <ClInclude Include="src\Events\MouseEvents.h" />
     <ClInclude Include="src\Keyboard.h" />
     <ClInclude Include="src\Mouse.h" />
+    <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h" />
     <ClInclude Include="src\Platform\Windows\Win32Window.h" />
     <ClInclude Include="src\Platform\Windows\WraithWin32.h" />
     <ClInclude Include="src\Wraith.h" />
@@ -118,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Input.cpp" />
+    <ClCompile Include="src\Core\Logger.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
     <ClCompile Include="src\Events\EventBus.cpp" />
     <ClCompile Include="src\Events\KeyboardEvents.cpp" />
