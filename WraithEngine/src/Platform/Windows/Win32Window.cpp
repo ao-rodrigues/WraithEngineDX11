@@ -1,11 +1,11 @@
 ﻿#include "wrpch.h"
-#include "Win32Window.h"
 
-#include "WraithWin32.h"
 #include "Events/EventBus.h"
 #include "Events/MouseEvents.h"
 #include "Events/KeyboardEvents.h"
 #include "Core/Input.h"
+
+#include "Win32Window.h"
 
 namespace Wraith
 {

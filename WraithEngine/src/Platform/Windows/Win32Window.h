@@ -2,7 +2,6 @@
 
 #include "WraithException.h"
 #include "Core/Window.h"
-#include "WraithWin32.h"
 
 namespace Wraith
 {

@@ -1,9 +1,5 @@
 #pragma once
-
 #include "Event.h"
-
-#include <unordered_map>
-#include <typeinfo>
 
 namespace Wraith
 {

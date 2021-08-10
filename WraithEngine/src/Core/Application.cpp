@@ -8,6 +8,7 @@
 #include "Events/MouseEvents.h"
 #include "Events/KeyboardEvents.h"
 #include "Core/KeyCodes.h"
+#include "WraithException.h"
 
 namespace Wraith
 {
