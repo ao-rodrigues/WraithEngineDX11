@@ -48,6 +48,11 @@ namespace Wraith
 			{
 				WR_LOG_WARN("aaaaaaaaaaaaaaaaaaaa");
 			}
+
+			if(const auto character = Input::ReadChar())
+			{
+				WR_LOG_ERROR(*character);
+			}
 		}
 	}
 }

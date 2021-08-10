@@ -41,11 +41,11 @@ project "WraithEngine"
 		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
-		defines { "DEBUG" }
+		defines { "DEBUG", "WR_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG" }
+		defines { "NDEBUG", "WR_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }
@@ -86,11 +86,11 @@ project "Sandbox"
 		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
-		defines { "DEBUG" }
+		defines { "DEBUG", "WR_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG" }
+		defines { "NDEBUG", "WR_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }
