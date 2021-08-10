@@ -28,7 +28,8 @@ project "WraithEngine"
 	}
 
 	includedirs {
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"vendor/spdlog/include"
 	}
 
 	buildoptions { "/W3", "/MP" }
@@ -40,11 +41,11 @@ project "WraithEngine"
 		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
-		defines { "DEBUG" }
+		defines { "DEBUG", "WR_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG" }
+		defines { "NDEBUG", "WR_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }
@@ -58,7 +59,7 @@ project "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("obj/" .. outputdir .. "/%{prj.name}")
@@ -69,7 +70,8 @@ project "Sandbox"
 	}
 
 	includedirs {
-		"WraithEngine/src"
+		"WraithEngine/src",
+		"vendor/spdlog/include"
 	}
 
 	buildoptions { "/W3", "/MP" }
@@ -84,11 +86,11 @@ project "Sandbox"
 		defines { "WR_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
-		defines { "DEBUG" }
+		defines { "DEBUG", "WR_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG" }
+		defines { "NDEBUG", "WR_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }

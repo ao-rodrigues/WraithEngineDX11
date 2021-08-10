@@ -16,5 +16,12 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <functional>
+#include <typeinfo>
 
-#include "WraithWin.h"
+#include "Core/Utils.h"
+
+#ifdef WR_PLATFORM_WINDOWS
+	#include "Platform/Windows/WraithWin32.h"
+#endif
+
