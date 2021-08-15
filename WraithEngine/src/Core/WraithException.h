@@ -6,6 +6,7 @@ namespace Wraith
 	{
 	public:
 		WraithException(int line, const char* file) noexcept;
+		virtual ~WraithException() = default;
 		
 		const char* what() const noexcept override;
 		

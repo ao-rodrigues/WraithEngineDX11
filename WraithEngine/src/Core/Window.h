@@ -15,6 +15,7 @@ namespace Wraith
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
+		virtual void* GetWindowHandle() const = 0;
 		virtual std::optional<int> ProcessMessages() = 0;
 	};
 }

@@ -12,6 +12,7 @@ namespace Wraith
 		virtual ~Application() = default;
 
 		int Run();
+		void Shutdown();
 
 	private:
 		std::shared_ptr<Window> _window;
