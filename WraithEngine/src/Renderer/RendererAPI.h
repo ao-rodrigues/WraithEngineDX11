@@ -14,17 +14,6 @@ namespace Wraith
 			Vulkan
 			// Future APIs here...
 		};
-
-		class UnsupportedAPIException : public WraithException
-		{
-		public:
-			UnsupportedAPIException(int line, const char* file, API renderingAPI);
-			const char* what() const noexcept override;
-			const char* GetType() const noexcept override;
-			std::string GetErrorString() const;
-		private:
-			API _renderingAPI;
-		};
 		
 		virtual ~RendererAPI() = default;
 		
@@ -38,5 +27,16 @@ namespace Wraith
 		static API s_API;
 	};
 
-#define WR_RENDERER_API_EXCEPTION(api) RendererAPI::UnsupportedAPIException(__LINE__, __FILE__, api)
+	class UnsupportedAPIException : public WraithException
+	{
+	public:
+		UnsupportedAPIException(int line, const char* file, RendererAPI::API renderingAPI);
+		const char* what() const noexcept override;
+		const char* GetType() const noexcept override;
+		std::string GetErrorString() const;
+	private:
+		RendererAPI::API _renderingAPI;
+	};
+
+#define WR_RENDERER_API_EXCEPTION(api) UnsupportedAPIException(__LINE__, __FILE__, api)
 }

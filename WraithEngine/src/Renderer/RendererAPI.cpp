@@ -24,12 +24,12 @@ namespace Wraith
 
 #pragma region RendererAPI::UnsupportedAPIException
 
-	RendererAPI::UnsupportedAPIException::UnsupportedAPIException(int line, const char* file, API renderingAPI)
+	UnsupportedAPIException::UnsupportedAPIException(int line, const char* file, RendererAPI::API renderingAPI)
 		: WraithException(line, file)
 		, _renderingAPI(renderingAPI)
 	{ }
 
-	const char* RendererAPI::UnsupportedAPIException::what() const noexcept
+	const char* UnsupportedAPIException::what() const noexcept
 	{
 		std::ostringstream oss;
 		oss << GetType() << std::endl
@@ -40,26 +40,26 @@ namespace Wraith
 		return _whatBuffer.c_str();
 	}
 
-	const char* RendererAPI::UnsupportedAPIException::GetType() const noexcept
+	const char* UnsupportedAPIException::GetType() const noexcept
 	{
 		return "Unsupported Rendering API Exception";
 	}
 
-	std::string RendererAPI::UnsupportedAPIException::GetErrorString() const
+	std::string UnsupportedAPIException::GetErrorString() const
 	{
 		const char* unsupportedAPI;
 		switch (_renderingAPI)
 		{
-		case API::None:
+		case RendererAPI::API::None:
 			unsupportedAPI = "None";
 			break;
-		case API::DirectX11:
+		case RendererAPI::API::DirectX11:
 			unsupportedAPI = "DirectX11";
 			break;
-		case API::DirectX12: 
+		case RendererAPI::API::DirectX12: 
 			unsupportedAPI = "DirectX12";
 			break;
-		case API::Vulkan: 
+		case RendererAPI::API::Vulkan: 
 			unsupportedAPI = "Vulkan";
 			break;
 		default: 

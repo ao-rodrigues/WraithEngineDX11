@@ -7,7 +7,9 @@ namespace Wraith
 {
 	DirectX11RendererAPI::DirectX11RendererAPI(HWND windowHandle)
 		:_windowHandle(windowHandle)
-	{}
+	{
+		
+	}
 
 	DirectX11RendererAPI::~DirectX11RendererAPI()
 	{

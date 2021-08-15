@@ -1,29 +1,13 @@
 #pragma once
 
-#include "Core/WraithException.h"
 #include "Core/Window.h"
+#include "Win32Exception.h"
 
 namespace Wraith
 {
 	class Win32Window : public Window
 	{
 	public:
-		class Exception : public WraithException
-		{
-		public:
-			
-			Exception(int line, const char* file, HRESULT hr) noexcept;
-
-			const char* what() const noexcept override;
-			const char* GetType() const noexcept override;
-			static std::string TranslateErrorCode(HRESULT hr) noexcept;
-			HRESULT GetErrorCode() const noexcept;
-			std::string GetErrorString() const noexcept;
-
-		private:
-			HRESULT _hr;
-		};
-		
 		Win32Window(const std::string& title, unsigned int width, unsigned int height);
 		virtual ~Win32Window();
 
@@ -59,8 +43,21 @@ namespace Wraith
 		HWND _hWnd;
 	};
 
+	class Win32WindowException : public Win32Exception
+	{
+	public:
+		Win32WindowException(int line, const char* file, HRESULT hr)
+			: Win32Exception(line, file, hr)
+		{}
+
+		const char* GetType() const noexcept override
+		{
+			return "Win32 Window Exception";
+		}
+	};
+
 	//Error exception helper macros
-	#define WR_WINDOW_EXCEPTION(hr) Win32Window::Exception(__LINE__, __FILE__, hr)
-	#define WR_WINDOW_LAST_EXCEPTION() Win32Window::Exception(__LINE__, __FILE__, GetLastError())
+	#define WR_WINDOW_EXCEPTION(hr) Win32WindowException(__LINE__, __FILE__, hr)
+	#define WR_WINDOW_LAST_EXCEPTION() Win32WindowException(__LINE__, __FILE__, GetLastError())
 }
 
