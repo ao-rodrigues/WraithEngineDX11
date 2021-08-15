@@ -71,6 +71,9 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -94,6 +97,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h" />
@@ -105,15 +111,18 @@
     <ClInclude Include="src\Core\MouseCodes.h" />
     <ClInclude Include="src\Core\Utils.h" />
     <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\Core\WraithException.h" />
     <ClInclude Include="src\Events\Event.h" />
     <ClInclude Include="src\Events\EventBus.h" />
     <ClInclude Include="src\Events\KeyboardEvents.h" />
     <ClInclude Include="src\Events\MouseEvents.h" />
+    <ClInclude Include="src\Platform\DirectX11\DirectX11RendererAPI.h" />
     <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h" />
     <ClInclude Include="src\Platform\Windows\Win32Window.h" />
     <ClInclude Include="src\Platform\Windows\WraithWin32.h" />
+    <ClInclude Include="src\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Wraith.h" />
-    <ClInclude Include="src\Core\WraithException.h" />
     <ClInclude Include="src\wrpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -121,11 +130,14 @@
     <ClCompile Include="src\Core\Input.cpp" />
     <ClCompile Include="src\Core\Logger.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Core\WraithException.cpp" />
     <ClCompile Include="src\Events\EventBus.cpp" />
     <ClCompile Include="src\Events\KeyboardEvents.cpp" />
     <ClCompile Include="src\Events\MouseEvents.cpp" />
+    <ClCompile Include="src\Platform\DirectX11\DirectX11RendererAPI.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp" />
-    <ClCompile Include="src\Core\WraithException.cpp" />
+    <ClCompile Include="src\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\wrpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

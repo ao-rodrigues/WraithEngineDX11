@@ -29,6 +29,7 @@ namespace Wraith
 
 		unsigned int GetWidth() const override { return _width; }
 		unsigned int GetHeight() const override { return _height; }
+		void* GetWindowHandle() const override { return _hWnd; }
 		std::optional<int> ProcessMessages() override;
 
 	private:

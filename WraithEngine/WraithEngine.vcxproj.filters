@@ -10,8 +10,14 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\DirectX11">
+      <UniqueIdentifier>{6EE5EAC0-5AC9-AB16-C329-A669AF2C9698}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +48,9 @@
     <ClInclude Include="src\Core\Window.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\WraithException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Events\Event.h">
       <Filter>Events</Filter>
     </ClInclude>
@@ -54,6 +63,9 @@
     <ClInclude Include="src\Events\MouseEvents.h">
       <Filter>Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\DirectX11\DirectX11RendererAPI.h">
+      <Filter>Platform\DirectX11</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -63,9 +75,12 @@
     <ClInclude Include="src\Platform\Windows\WraithWin32.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\RendererAPI.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Wraith.h" />
-    <ClInclude Include="src\Core\WraithException.h" />
     <ClInclude Include="src\wrpch.h" />
+    <ClInclude Include="src\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -80,6 +95,9 @@
     <ClCompile Include="src\Core\Window.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\WraithException.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Events\EventBus.cpp">
       <Filter>Events</Filter>
     </ClCompile>
@@ -89,10 +107,16 @@
     <ClCompile Include="src\Events\MouseEvents.cpp">
       <Filter>Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\DirectX11\DirectX11RendererAPI.cpp">
+      <Filter>Platform\DirectX11</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\WraithException.cpp" />
+    <ClCompile Include="src\Renderer\RendererAPI.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\wrpch.cpp" />
+    <ClCompile Include="src\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

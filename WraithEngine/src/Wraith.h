@@ -7,3 +7,6 @@
 #include "Core/Application.h"
 #include "Core/Logger.h"
 #include "Core/EntryPoint.h"
+
+#include "Renderer/Renderer.h"
+#include "Renderer/RendererAPI.h"

@@ -39,6 +39,7 @@ project "WraithEngine"
 		systemversion "latest"
 		characterset "MBCS"
 		defines { "WR_PLATFORM_WINDOWS" }
+		links { "d3d11.lib" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG", "WR_DEBUG" }
