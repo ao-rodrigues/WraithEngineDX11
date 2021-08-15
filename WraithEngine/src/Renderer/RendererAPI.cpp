@@ -22,14 +22,14 @@ namespace Wraith
 
 #pragma endregion
 
-#pragma region RendererAPI::Exception
+#pragma region RendererAPI::UnsupportedAPIException
 
-	RendererAPI::Exception::Exception(int line, const char* file, API renderingAPI)
+	RendererAPI::UnsupportedAPIException::UnsupportedAPIException(int line, const char* file, API renderingAPI)
 		: WraithException(line, file)
 		, _renderingAPI(renderingAPI)
 	{ }
 
-	const char* RendererAPI::Exception::what() const noexcept
+	const char* RendererAPI::UnsupportedAPIException::what() const noexcept
 	{
 		std::ostringstream oss;
 		oss << GetType() << std::endl
@@ -40,12 +40,12 @@ namespace Wraith
 		return _whatBuffer.c_str();
 	}
 
-	const char* RendererAPI::Exception::GetType() const noexcept
+	const char* RendererAPI::UnsupportedAPIException::GetType() const noexcept
 	{
-		return "Renderer API Exception";
+		return "Unsupported Rendering API Exception";
 	}
 
-	std::string RendererAPI::Exception::GetErrorString() const
+	std::string RendererAPI::UnsupportedAPIException::GetErrorString() const
 	{
 		const char* unsupportedAPI;
 		switch (_renderingAPI)

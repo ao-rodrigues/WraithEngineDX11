@@ -15,10 +15,10 @@ namespace Wraith
 			// Future APIs here...
 		};
 
-		class Exception : public WraithException
+		class UnsupportedAPIException : public WraithException
 		{
 		public:
-			Exception(int line, const char* file, API renderingAPI);
+			UnsupportedAPIException(int line, const char* file, API renderingAPI);
 			const char* what() const noexcept override;
 			const char* GetType() const noexcept override;
 			std::string GetErrorString() const;
@@ -38,5 +38,5 @@ namespace Wraith
 		static API s_API;
 	};
 
-#define WR_RENDERER_API_EXCEPTION(api) RendererAPI::Exception(__LINE__, __FILE__, api)
+#define WR_RENDERER_API_EXCEPTION(api) RendererAPI::UnsupportedAPIException(__LINE__, __FILE__, api)
 }
