@@ -38,7 +38,7 @@ namespace Wraith
 
 	const char* DirectX11Exception::GetType() const noexcept
 	{
-		return "DirectX11 Wraith Exception";
+		return "DirectX11 Exception";
 	}
 
 	const char* DirectX11Exception::GetErrorInfo() const
@@ -74,7 +74,7 @@ namespace Wraith
 
 	const char* DirectX11ExceptionNoHR::GetType() const noexcept
 	{
-		return "DirectX11 Wraith Exception";
+		return "DirectX11 Exception";
 	}
 
 	std::string DirectX11ExceptionNoHR::GetErrorInfo() const noexcept
