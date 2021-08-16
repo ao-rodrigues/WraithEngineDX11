@@ -21,7 +21,7 @@
 
 #include "Core/Utils.h"
 
-#ifdef WR_PLATFORM_WINDOWS
+#ifdef WRAITH_PLATFORM_WINDOWS
 	#include "Platform/Windows/WraithWin32.h"
 #endif
 

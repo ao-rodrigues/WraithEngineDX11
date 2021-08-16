@@ -48,12 +48,12 @@ namespace Wraith
 		sd.Flags = 0;
 
 		UINT creationFlags = 0;
-#ifdef WR_DEBUG
+#ifdef WRAITH_DEBUG
 		creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 		
 		HRESULT hr;
-		WR_DX11_ERROR_CHECK(D3D11CreateDeviceAndSwapChain(
+		WRAITH_DX11_ERROR_CHECK(D3D11CreateDeviceAndSwapChain(
 			nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
 			nullptr,
@@ -69,8 +69,8 @@ namespace Wraith
 		));
 
 		ID3D11Resource* backBuffer = nullptr;
-		WR_DX11_ERROR_CHECK(_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&backBuffer)));
-		WR_DX11_ERROR_CHECK(_device->CreateRenderTargetView(
+		WRAITH_DX11_ERROR_CHECK(_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&backBuffer)));
+		WRAITH_DX11_ERROR_CHECK(_device->CreateRenderTargetView(
 			backBuffer,
 			nullptr,
 			&_renderTargetView
@@ -91,10 +91,10 @@ namespace Wraith
 		{
 			if (hr == DXGI_ERROR_DEVICE_REMOVED)
 			{
-				throw WR_DEVICE_REMOVED(_device->GetDeviceRemovedReason());
+				throw WRAITH_DEVICE_REMOVED(_device->GetDeviceRemovedReason());
 			}
 			
-			WR_DX11_ERROR_CHECK(hr);
+			WRAITH_DX11_ERROR_CHECK(hr);
 		}
 	}
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include "Event.h"
 
-#define WR_BIND_EVENT_CALLBACK(callback) [this](auto&&... args) -> decltype(auto) { return  this->callback(std::forward<decltype(args)>(args)...); }
-#define WR_BIND_EVENT_CALLBACK_STATIC(callback) [](auto&&... args) -> decltype(auto) { return  callback(std::forward<decltype(args)>(args)...); }
+#define WRAITH_BIND_EVENT_CALLBACK(callback) [this](auto&&... args) -> decltype(auto) { return  this->callback(std::forward<decltype(args)>(args)...); }
+#define WRAITH_BIND_EVENT_CALLBACK_STATIC(callback) [](auto&&... args) -> decltype(auto) { return  callback(std::forward<decltype(args)>(args)...); }
 
 namespace Wraith
 {

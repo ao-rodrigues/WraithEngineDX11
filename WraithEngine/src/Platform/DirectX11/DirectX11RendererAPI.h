@@ -40,5 +40,5 @@ namespace Wraith
 		}
 	};
 
-#define WR_DEVICE_REMOVED(hr) DeviceRemovedException(__LINE__, __FILE__, hr)
+#define WRAITH_DEVICE_REMOVED(hr) DeviceRemovedException(__LINE__, __FILE__, hr)
 }

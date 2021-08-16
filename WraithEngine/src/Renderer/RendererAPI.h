@@ -38,5 +38,5 @@ namespace Wraith
 		RendererAPI::API _renderingAPI;
 	};
 
-#define WR_RENDERER_API_EXCEPTION(api) UnsupportedAPIException(__LINE__, __FILE__, api)
+#define WRAITH_RENDERER_API_EXCEPTION(api) UnsupportedAPIException(__LINE__, __FILE__, api)
 }

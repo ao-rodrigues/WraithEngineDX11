@@ -38,18 +38,18 @@ project "WraithEngine"
 	filter "system:windows"
 		systemversion "latest"
 		characterset "MBCS"
-		defines { "WR_PLATFORM_WINDOWS" }
+		defines { "WRAITH_PLATFORM_WINDOWS" }
 		links { 
 			"d3d11.lib",
 			"dxguid.lib"
 		}
 
 	filter "configurations:Debug"
-		defines { "DEBUG", "WR_DEBUG" }
+		defines { "DEBUG", "WRAITH_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG", "WR_RELEASE" }
+		defines { "NDEBUG", "WRAITH_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }
@@ -87,14 +87,14 @@ project "Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 		characterset "MBCS"
-		defines { "WR_PLATFORM_WINDOWS" }
+		defines { "WRAITH_PLATFORM_WINDOWS" }
 
 	filter "configurations:Debug"
-		defines { "DEBUG", "WR_DEBUG" }
+		defines { "DEBUG", "WRAITH_DEBUG" }
 		symbols "on"
 
 	filter "configurations:Release"
-		defines { "NDEBUG", "WR_RELEASE" }
+		defines { "NDEBUG", "WRAITH_RELEASE" }
 		optimize "on"
 
 	filter { "system:windows", "configurations:Debug" }

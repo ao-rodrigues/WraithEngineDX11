@@ -7,14 +7,14 @@ namespace Wraith
 {
 	void Input::Init()
 	{	
-		EventBus::Register<MouseMovedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnMouseMoved));
-		EventBus::Register<MouseButtonPressedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnMouseButtonPressed));
-		EventBus::Register<MouseButtonReleasedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnMouseButtonReleased));
-		EventBus::Register<MouseWheelDeltaEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnMouseWheelDelta));
+		EventBus::Register<MouseMovedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnMouseMoved));
+		EventBus::Register<MouseButtonPressedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnMouseButtonPressed));
+		EventBus::Register<MouseButtonReleasedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnMouseButtonReleased));
+		EventBus::Register<MouseWheelDeltaEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnMouseWheelDelta));
 
-		EventBus::Register<KeyPressedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnKeyPressed));
-		EventBus::Register<KeyReleasedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnKeyReleased));
-		EventBus::Register<KeyTypedEvent>(WR_BIND_EVENT_CALLBACK_STATIC(OnKeyTyped));
+		EventBus::Register<KeyPressedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnKeyPressed));
+		EventBus::Register<KeyReleasedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnKeyReleased));
+		EventBus::Register<KeyTypedEvent>(WRAITH_BIND_EVENT_CALLBACK_STATIC(OnKeyTyped));
 	}
 
 #pragma region Mouse Input

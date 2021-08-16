@@ -16,7 +16,7 @@ namespace Wraith
 
 	int Application::Run()
 	{
-		WR_LOG_INFO("Client initialized!");
+		WRAITH_LOG_INFO("Client initialized!");
 		
 		while (true)
 		{

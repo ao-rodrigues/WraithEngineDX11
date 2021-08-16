@@ -25,7 +25,7 @@ namespace Wraith
 
 		if(AdjustWindowRect(&windowRect, WS_CAPTION | WS_MINIMIZEBOX |WS_SYSMENU, FALSE) == 0)
 		{
-			throw WR_WINDOW_LAST_EXCEPTION();
+			throw WRAITH_WINDOW_LAST_EXCEPTION();
 		}
 		
 		// Create window and get hWnd
@@ -45,7 +45,7 @@ namespace Wraith
 
 		if(_hWnd == nullptr)
 		{
-			throw WR_WINDOW_LAST_EXCEPTION();
+			throw WRAITH_WINDOW_LAST_EXCEPTION();
 		}
 
 		// Show window

@@ -12,7 +12,7 @@ namespace Wraith
 		const auto hModDXGIDebug = LoadLibraryEx("dxgidebug.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
 		if (!hModDXGIDebug)
 		{
-			throw WR_WIN32_LAST_EXCEPTION();
+			throw WRAITH_WIN32_LAST_EXCEPTION();
 		}
 
 		const auto dxgiGetDebugInterface = reinterpret_cast<DXGIGetDebugInterface>(
@@ -21,11 +21,11 @@ namespace Wraith
 
 		if(!dxgiGetDebugInterface)
 		{
-			throw WR_WIN32_LAST_EXCEPTION();
+			throw WRAITH_WIN32_LAST_EXCEPTION();
 		}
 
 		HRESULT hr;
-		WR_WIN32_ERROR_CHECK(dxgiGetDebugInterface(__uuidof(IDXGIInfoQueue), reinterpret_cast<void**>(&_dxgiInfoQueue)));
+		WRAITH_WIN32_ERROR_CHECK(dxgiGetDebugInterface(__uuidof(IDXGIInfoQueue), reinterpret_cast<void**>(&_dxgiInfoQueue)));
 	}
 
 	DXGIInfoManager::~DXGIInfoManager()
@@ -50,13 +50,13 @@ namespace Wraith
 			HRESULT hr;
 			SIZE_T messageLength = 0u;
 			// Get the size of message i in bytes
-			WR_WIN32_ERROR_CHECK(_dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, nullptr, &messageLength));
+			WRAITH_WIN32_ERROR_CHECK(_dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, nullptr, &messageLength));
 
 			auto bytes = std::make_unique<byte[]>(messageLength);
 			auto message = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>(bytes.get());
 
 			// Get the message and push its description into the vector
-			WR_WIN32_ERROR_CHECK(_dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, message, &messageLength));
+			WRAITH_WIN32_ERROR_CHECK(_dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, message, &messageLength));
 			messages.emplace_back(message->pDescription);
 		}
 

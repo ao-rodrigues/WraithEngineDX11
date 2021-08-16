@@ -16,7 +16,7 @@ namespace Wraith
 		case API::DirectX11:
 			return std::make_unique<DirectX11RendererAPI>(static_cast<HWND>(windowHandle));
 		default:
-			throw WR_RENDERER_API_EXCEPTION(s_API);
+			throw WRAITH_RENDERER_API_EXCEPTION(s_API);
 		}
 	}
 

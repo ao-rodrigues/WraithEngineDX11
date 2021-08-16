@@ -10,7 +10,7 @@ namespace Wraith
 	class Input
 	{
 	friend class Application;
-#ifdef WR_PLATFORM_WINDOWS
+#ifdef WRAITH_PLATFORM_WINDOWS
 	friend class Win32Window;
 #endif
 	public:

@@ -57,7 +57,7 @@ namespace Wraith
 	};
 
 	//Error exception helper macros
-	#define WR_WINDOW_EXCEPTION(hr) Win32WindowException(__LINE__, __FILE__, hr)
-	#define WR_WINDOW_LAST_EXCEPTION() Win32WindowException(__LINE__, __FILE__, GetLastError())
+	#define WRAITH_WINDOW_EXCEPTION(hr) Win32WindowException(__LINE__, __FILE__, hr)
+	#define WRAITH_WINDOW_LAST_EXCEPTION() Win32WindowException(__LINE__, __FILE__, GetLastError())
 }
 

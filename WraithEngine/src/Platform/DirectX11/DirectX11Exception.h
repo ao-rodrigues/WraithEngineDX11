@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Platform/Windows/Win32Exception.h"
 
-#ifdef WR_DEBUG
+#ifdef WRAITH_DEBUG
 #include "DXGIInfoManager.h"
 #endif
 
@@ -19,9 +19,9 @@ namespace Wraith
 		std::string _info;
 	};
 
-#ifdef WR_DEBUG
-	#define WR_DX11_ERROR_CHECK(hrCall) if(FAILED(hr = (hrCall))) throw DirectX11Exception(__LINE__, __FILE__, hr, DXGIInfoManager::GetInstance().GetMessages())
+#ifdef WRAITH_DEBUG
+	#define WRAITH_DX11_ERROR_CHECK(hrCall) if(FAILED(hr = (hrCall))) throw DirectX11Exception(__LINE__, __FILE__, hr, DXGIInfoManager::GetInstance().GetMessages())
 #else
-	#define WR_DX11_ERROR_CHECK(hrCall) if(FAILED(hr = (hrCall))) throw DirectX11Exception(__LINE__, __FILE__, hr)
+	#define WRAITH_DX11_ERROR_CHECK(hrCall) if(FAILED(hr = (hrCall))) throw DirectX11Exception(__LINE__, __FILE__, hr)
 #endif
 }
