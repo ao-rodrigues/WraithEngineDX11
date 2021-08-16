@@ -23,6 +23,7 @@ namespace Wraith
 
 	void Renderer::Render()
 	{
+		s_rendererAPI->DrawTestTriangles();
 		s_rendererAPI->SwapBuffers();
 	}
 }

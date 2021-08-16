@@ -84,6 +84,43 @@ namespace Wraith
 		_context->ClearRenderTargetView(_renderTargetView, color);
 	}
 
+	void DirectX11RendererAPI::DrawTestTriangles()
+	{
+		struct Vertex
+		{
+			float x;
+			float y;
+		};
+
+		const Vertex vertices[] = 
+		{
+			{0.0f, 0.5f},
+			{0.5f, -0.5f},
+			{-0.5f, -0.5f}
+		};
+		
+		ID3D11Buffer* vertexBuffer;
+		D3D11_BUFFER_DESC bd = {};
+		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bd.Usage = D3D11_USAGE_DEFAULT;
+		bd.CPUAccessFlags = 0u;
+		bd.MiscFlags = 0u;
+		bd.ByteWidth = sizeof(vertices);
+		bd.StructureByteStride = sizeof(Vertex);
+
+		D3D11_SUBRESOURCE_DATA sd = {};
+		sd.pSysMem = vertices;
+
+		HRESULT hr;
+		WRAITH_DX11_ERROR_CHECK(_device->CreateBuffer(&bd, &sd, &vertexBuffer));
+
+		const UINT stride = sizeof(Vertex);
+		const UINT offset = 0u;
+		
+		_context->IASetVertexBuffers(0u, 1u, &vertexBuffer, &stride, &offset);
+		WRAITH_DX11_ERROR_CHECK_NO_HR(_context->Draw(3u, 0u));
+	}
+
 	void DirectX11RendererAPI::SwapBuffers()
 	{
 		HRESULT hr;

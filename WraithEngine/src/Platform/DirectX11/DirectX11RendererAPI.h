@@ -17,6 +17,7 @@ namespace Wraith
 		
 		void Init() override;
 		void SetClearColor(float red, float green, float blue, float alpha) override;
+		void DrawTestTriangles() override;
 		void SwapBuffers() override;
 
 	private:

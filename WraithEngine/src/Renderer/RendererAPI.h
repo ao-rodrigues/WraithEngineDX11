@@ -19,6 +19,7 @@ namespace Wraith
 		
 		virtual void Init() = 0;
 		virtual void SetClearColor(float red, float green, float blue, float alpha) = 0;
+		virtual void DrawTestTriangles() = 0;
 		virtual void SwapBuffers() = 0;
 
 		static std::unique_ptr<RendererAPI> Create(void* windowHandle);

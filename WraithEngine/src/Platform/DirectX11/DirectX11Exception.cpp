@@ -45,4 +45,40 @@ namespace Wraith
 	{
 		return _info.c_str();
 	}
+
+	DirectX11ExceptionNoHR::DirectX11ExceptionNoHR(int line, const char* file, std::vector<std::string> infoMessages)
+		: WraithException(line, file)
+	{
+		for (const auto& msg : infoMessages)
+		{
+			_info += msg;
+			_info.push_back('\n');
+		}
+
+		if (!_info.empty())
+		{
+			_info.pop_back();
+		}
+	}
+
+	const char* DirectX11ExceptionNoHR::what() const noexcept
+	{
+		std::ostringstream oss;
+		oss << GetType() << std::endl
+			<< "\n[Error Info]\n" << GetErrorInfo() << std::endl << std::endl;
+		oss << GetOriginString();
+
+		_whatBuffer = oss.str();
+		return _whatBuffer.c_str();
+	}
+
+	const char* DirectX11ExceptionNoHR::GetType() const noexcept
+	{
+		return "DirectX11 Wraith Exception";
+	}
+
+	std::string DirectX11ExceptionNoHR::GetErrorInfo() const noexcept
+	{
+		return _info;
+	}
 }
