@@ -42,6 +42,9 @@
     <ClInclude Include="src\Core\MouseCodes.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Singleton.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\Utils.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -63,8 +66,17 @@
     <ClInclude Include="src\Events\MouseEvents.h">
       <Filter>Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\DirectX11\DXGIInfoManager.h">
+      <Filter>Platform\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX11\DirectX11Exception.h">
+      <Filter>Platform\DirectX11</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\DirectX11\DirectX11RendererAPI.h">
       <Filter>Platform\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\Win32Exception.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h">
       <Filter>Platform\Windows</Filter>
@@ -75,13 +87,14 @@
     <ClInclude Include="src\Platform\Windows\WraithWin32.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Renderer\RendererAPI.h">
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\wrpch.h" />
-    <ClInclude Include="src\Renderer\Renderer.h" />
-    <ClInclude Include="src\Platform\Windows\Win32Exception.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -108,17 +121,27 @@
     <ClCompile Include="src\Events\MouseEvents.cpp">
       <Filter>Events</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\DirectX11\DXGIInfoManager.cpp">
+      <Filter>Platform\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX11\DirectX11Exception.cpp">
+      <Filter>Platform\DirectX11</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\DirectX11\DirectX11RendererAPI.cpp">
       <Filter>Platform\DirectX11</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\Win32Exception.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp">
       <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Renderer.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\RendererAPI.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\wrpch.cpp" />
-    <ClCompile Include="src\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Platform\Windows\Win32Exception.cpp" />
   </ItemGroup>
 </Project>

@@ -25,6 +25,16 @@ namespace Wraith
 		return "Win32 Exception";
 	}
 
+	HRESULT Win32Exception::GetErrorCode() const noexcept
+	{
+		return _hr;
+	}
+
+	std::string Win32Exception::GetErrorString() const noexcept
+	{
+		return TranslateErrorCode(_hr);
+	}
+
 	std::string Win32Exception::TranslateErrorCode(HRESULT hr) noexcept
 	{
 		char* pMsgBuffer = nullptr;
@@ -47,15 +57,5 @@ namespace Wraith
 		std::string errorString = pMsgBuffer;
 		LocalFree(pMsgBuffer);
 		return errorString;
-	}
-
-	HRESULT Win32Exception::GetErrorCode() const noexcept
-	{
-		return _hr;
-	}
-
-	std::string Win32Exception::GetErrorString() const noexcept
-	{
-		return TranslateErrorCode(_hr);
 	}
 }

@@ -72,7 +72,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -98,7 +98,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -109,6 +109,7 @@
     <ClInclude Include="src\Core\KeyCodes.h" />
     <ClInclude Include="src\Core\Logger.h" />
     <ClInclude Include="src\Core\MouseCodes.h" />
+    <ClInclude Include="src\Core\Singleton.h" />
     <ClInclude Include="src\Core\Utils.h" />
     <ClInclude Include="src\Core\Window.h" />
     <ClInclude Include="src\Core\WraithException.h" />
@@ -116,13 +117,15 @@
     <ClInclude Include="src\Events\EventBus.h" />
     <ClInclude Include="src\Events\KeyboardEvents.h" />
     <ClInclude Include="src\Events\MouseEvents.h" />
+    <ClInclude Include="src\Platform\DirectX11\DXGIInfoManager.h" />
+    <ClInclude Include="src\Platform\DirectX11\DirectX11Exception.h" />
     <ClInclude Include="src\Platform\DirectX11\DirectX11RendererAPI.h" />
     <ClInclude Include="src\Platform\Windows\Win32Exception.h" />
     <ClInclude Include="src\Platform\Windows\Win32KeyCodes.h" />
     <ClInclude Include="src\Platform\Windows\Win32Window.h" />
     <ClInclude Include="src\Platform\Windows\WraithWin32.h" />
-    <ClInclude Include="src\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
+    <ClInclude Include="src\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Wraith.h" />
     <ClInclude Include="src\wrpch.h" />
   </ItemGroup>
@@ -135,11 +138,13 @@
     <ClCompile Include="src\Events\EventBus.cpp" />
     <ClCompile Include="src\Events\KeyboardEvents.cpp" />
     <ClCompile Include="src\Events\MouseEvents.cpp" />
+    <ClCompile Include="src\Platform\DirectX11\DXGIInfoManager.cpp" />
+    <ClCompile Include="src\Platform\DirectX11\DirectX11Exception.cpp" />
     <ClCompile Include="src\Platform\DirectX11\DirectX11RendererAPI.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Exception.cpp" />
     <ClCompile Include="src\Platform\Windows\Win32Window.cpp" />
-    <ClCompile Include="src\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\wrpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

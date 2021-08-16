@@ -1,5 +1,6 @@
 #pragma once
 #include "Renderer/RendererAPI.h"
+#include "Platform/Windows/Win32Exception.h"
 
 struct ID3D11Device;
 struct IDXGISwapChain;
@@ -25,4 +26,19 @@ namespace Wraith
 		ID3D11DeviceContext* _context = nullptr;
 		ID3D11RenderTargetView* _renderTargetView = nullptr;
 	};
+
+	class DeviceRemovedException : public Win32Exception
+	{
+	public:
+		DeviceRemovedException(int line, const char* file, HRESULT hr)
+			: Win32Exception(line, file, hr)
+		{}
+
+		const char* GetType() const noexcept override
+		{
+			return "Device Removed Exception";
+		}
+	};
+
+#define WR_DEVICE_REMOVED(hr) DeviceRemovedException(__LINE__, __FILE__, hr)
 }

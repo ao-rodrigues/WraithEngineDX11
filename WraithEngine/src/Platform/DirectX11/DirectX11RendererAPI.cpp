@@ -1,5 +1,6 @@
 ﻿#include "wrpch.h"
 #include "DirectX11RendererAPI.h"
+#include "DirectX11Exception.h"
 
 #include <d3d11.h>
 
@@ -7,9 +8,7 @@ namespace Wraith
 {
 	DirectX11RendererAPI::DirectX11RendererAPI(HWND windowHandle)
 		:_windowHandle(windowHandle)
-	{
-		
-	}
+	{}
 
 	DirectX11RendererAPI::~DirectX11RendererAPI()
 	{
@@ -48,11 +47,17 @@ namespace Wraith
 		sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 		sd.Flags = 0;
 
-		D3D11CreateDeviceAndSwapChain(
+		UINT creationFlags = 0;
+#ifdef WR_DEBUG
+		creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
+#endif
+		
+		HRESULT hr;
+		WR_DX11_ERROR_CHECK(D3D11CreateDeviceAndSwapChain(
 			nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
 			nullptr,
-			0,
+			creationFlags,
 			nullptr,
 			0,
 			D3D11_SDK_VERSION,
@@ -61,15 +66,15 @@ namespace Wraith
 			&_device,
 			nullptr,
 			&_context
-		);
+		));
 
 		ID3D11Resource* backBuffer = nullptr;
-		_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&backBuffer));
-		_device->CreateRenderTargetView(
+		WR_DX11_ERROR_CHECK(_swapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&backBuffer)));
+		WR_DX11_ERROR_CHECK(_device->CreateRenderTargetView(
 			backBuffer,
 			nullptr,
 			&_renderTargetView
-		);
+		));
 		backBuffer->Release();
 	}
 
@@ -81,6 +86,15 @@ namespace Wraith
 
 	void DirectX11RendererAPI::SwapBuffers()
 	{
-		_swapChain->Present(1u, 0u);
+		HRESULT hr;
+		if(FAILED(hr =_swapChain->Present(1u, 0u)))
+		{
+			if (hr == DXGI_ERROR_DEVICE_REMOVED)
+			{
+				throw WR_DEVICE_REMOVED(_device->GetDeviceRemovedReason());
+			}
+			
+			WR_DX11_ERROR_CHECK(hr);
+		}
 	}
 }
